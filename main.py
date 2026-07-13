@@ -4,8 +4,11 @@ import discord
 from discord import app_commands
 import asyncio
 from datetime import datetime, timedelta
+import os
+import dotenv
+from dotenv import load_dotenv
+load_dotenv()
 
-TOKEN = "MTUyNjA3MDM2OTM2MTA3MjI1OA.GQMDgb.rMnRnjUGsfini447n-Wr2-HVvtolBlqAV4wUDw"
 GUILD_ID = 1526024162768846988  # integer
 LOG_CHANNEL_ID = 1526073282447544440
 INVITE_URL = "https://discord.gg/egZtSDaEq6"
@@ -247,4 +250,4 @@ async def kick(interaction: discord.Interaction, member: discord.Member, reason:
     await dm_then_action_member(member, dm, log, row, do_kick)
     await interaction.followup.send(f"Kicked {member}.", ephemeral=True)
 
-client.run(TOKEN)
+client.run(os.getenv("TOKEN"))
